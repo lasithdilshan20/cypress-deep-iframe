@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nested Iframes</title>
+    <style>
+        iframe {
+            width: 1024px;
+            height: 798px;
+            border: 3px solid #333;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Main Page</h1>
+<iframe id="firstLevel" src="firstLevel.html"></iframe>
+
+<!-- For simplicity, inline iframes. But normally these would be separate HTML files you're loading into each iframe -->
+<script type="text/html" id="firstLevelContent">
+    <html>
+    <body>
+    <h2>Iframe Level 1</h2>
+    <iframe id="secondLevel" src="secondLevel.html"></iframe>
+    </body>
+    </html>
+</script>
+
+<script type="text/html" id="secondLevelContent">
+    <html>
+    <body>
+    <h2>Iframe Level 2</h2>
+    <iframe id="thirdLevel" src="thirdLevel.html"></iframe>
+    </body>
+    </html>
+</script>
+
+<script type="text/html" id="thirdLevelContent">
+    <html>
+    <body>
+    <h2>Iframe Level 3</h2>
+    <p>Content in the third level iframe</p>
+    </body>
+    </html>
+</script>
+</body>
+</html>

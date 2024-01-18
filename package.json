@@ -1,0 +1,22 @@
+{
+  "name": "cypress-deep-iframe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lasithdilshan20/cypress-deep-iframe.git"
+  },
+  "author": "Lasitha W.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lasithdilshan20/cypress-deep-iframe/issues"
+  },
+  "homepage": "https://github.com/lasithdilshan20/cypress-deep-iframe#readme",
+  "dependencies": {
+    "cypress": "^13.6.3"
+  }
+}
