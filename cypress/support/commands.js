@@ -34,7 +34,6 @@ Cypress.Commands.add('collectIframeSelectors', (rootElement = 'body') => {
 Cypress.Commands.add('traverseDeepIframe', (iframeSelectors, actionCallback) => {
     const traverseIframes = (index = 0) => {
         if (index >= iframeSelectors.length) {
-            // Reached the deepest iframe, perform the action
             actionCallback();
             return;
         }
@@ -44,12 +43,10 @@ Cypress.Commands.add('traverseDeepIframe', (iframeSelectors, actionCallback) => 
         cy.get(selector)
             .its('0.contentDocument.body').should('not.be.undefined') // Wait for iframe to load
             .then((iframeBody) => {
-                // Switch context to iframe, and recursively call traverseIframes function for next level
                 cy.wrap(iframeBody).within(() => traverseIframes(index + 1));
             });
     };
 
-    // Start traversal from the 1st iframe
     traverseIframes(0);
 });
 
@@ -67,11 +64,9 @@ Cypress.Commands.add('traverseToIframeContainingElement', (iframeSelectors, targ
                 cy.log(`Current iframe Wrapped Body: ${cy.wrap(iFrameBody).toString()}`);
                 cy.log(`Current iframe Wrapped Body: ${cy.wrap(iFrameBody).find(targetSelector).toString()}`);
                 if (cy.wrap(iFrameBody).find(targetSelector).length > 0) {
-                    // Found the target element, perform the action.
                     cy.log(`Found target element ${targetSelector} inside iframe ${selector}`)
                     actionCallback();
                 } else {
-                    // Element not found inside the current iframe, move on to the next.
                     cy.get(selector).its('0.contentDocument.body').should('not.be.undefined') // Wait for iframe to load
                         .then((iframeBody) => {
                             // Switch context to iframe, and recursively call traverseIframes function for next level
@@ -82,8 +77,6 @@ Cypress.Commands.add('traverseToIframeContainingElement', (iframeSelectors, targ
             });
         })
     };
-
-    // Start traversal from the 1st iframe
     traverseIframes(0);
 });
 
